@@ -8,6 +8,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+  document.querySelectorAll('a[href="#coming-soon"]').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const message = document.createElement('div');
+      message.innerText = '🚧 Coming Soon!';
+      message.style.position = 'fixed';
+      message.style.top = '50%';
+      message.style.left = '50%';
+      message.style.transform = 'translate(-50%, -50%)';
+      message.style.backgroundColor = '#222';
+      message.style.color = '#fff';
+      message.style.padding = '20px 40px';
+      message.style.fontSize = '24px';
+      message.style.borderRadius = '10px';
+      message.style.zIndex = '9999';
+      message.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.remove();
+      }, 2000);
+    });
+  });
+
 // Initialize AOS (Animate On Scroll Library)
 document.addEventListener("DOMContentLoaded", function () {
     AOS.init({

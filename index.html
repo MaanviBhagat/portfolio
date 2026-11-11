@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maanvi Bhagat | Game Designer & Cyber Analyst</title>
+<meta name="description" content="Computer engineer with Honours in AR/VR. Games, OSINT, AI tools and teaching.">
+<script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t)t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=t})()</script>
+<style>
+:root{
+  --ink:#0c0f1f;--panel:#141935;--panel2:#1a2145;--line:#2b3463;
+  --text:#e8ebff;--muted:#a0a9d6;--cyan:#52e5ff;--pink:#ff5fa2;--gold:#ffd166;
+  --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+:root[data-theme=light]{--ink:#f4f6ff;--panel:#ffffff;--panel2:#e8ecff;--line:#cfd6f5;--text:#14183a;--muted:#4a5380;--cyan:#00677f;--pink:#b3135a;--gold:#855400}
+.term{--cyan:#52e5ff;--pink:#ff5fa2;--gold:#ffd166;--text:#e8ebff;--muted:#a0a9d6;--panel:#141935;--line:#2b3463}
+:root[data-theme=light] nav{background:rgba(244,246,255,.92)}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font:16px/1.6 var(--sans);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;background-attachment:fixed;background-blend-mode:soft-light}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0,transparent,var(--ink) 75%);pointer-events:none;z-index:-1}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(12,15,31,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+nav b{font-family:var(--mono);color:var(--cyan);margin-right:auto}
+nav a{color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:6px;font-size:.92rem}
+nav a:hover{color:var(--text);background:var(--panel2)}
+.tool{background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 10px;font:.85rem var(--sans);cursor:pointer}
+.tool:hover,.tool[aria-pressed=true]{color:var(--cyan);border-color:var(--cyan)}
+section{padding:64px 0 8px}
+h2{font-size:1.7rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:26px;max-width:60ch}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center;padding:56px 0 24px}
+.avatar{width:84px;height:84px;border-radius:16px;border:2px solid var(--cyan);display:grid;place-items:center;
+  font:700 1.9rem var(--mono);color:var(--cyan);background:var(--panel);overflow:hidden;position:relative;margin-bottom:18px}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+h1{font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:12px}
+.tag{font-size:1.15rem;color:var(--muted);max-width:44ch;margin-bottom:22px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;font-weight:600;background:none;cursor:pointer;font:inherit;font-weight:600}
+.btn.fill{background:var(--cyan);color:var(--ink)}
+.btn:hover{box-shadow:0 0 0 3px rgba(82,229,255,.25)}
+.xp{margin-top:26px;display:grid;gap:10px;max-width:420px}
+.bar label{display:flex;justify-content:space-between;font:.8rem var(--mono);color:var(--muted);margin-bottom:3px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}
+.bar i span{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--pink));transition:width 1.2s ease}
+.term{background:#080a17;border:1px solid var(--line);border-radius:12px;overflow:hidden;font:.88rem/1.55 var(--mono)}
+.term header{display:flex;gap:6px;align-items:center;padding:9px 12px;background:var(--panel);border-bottom:1px solid var(--line);color:var(--muted);font-size:.78rem}
+.term header u{width:10px;height:10px;border-radius:50%;background:var(--line);text-decoration:none}
+.term header u:first-child{background:var(--pink)}.term header u:nth-child(2){background:var(--gold)}.term header u:nth-child(3){background:var(--cyan)}
+#out{height:300px;overflow:auto;padding:12px 14px;white-space:pre-wrap;word-break:break-word;color:#cfd5ff}
+#out .c{color:var(--cyan)}#out .g{color:var(--gold)}#out .p{color:var(--pink)}
+.prompt{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line)}
+.prompt span{color:var(--cyan)}
+.prompt input{flex:1;background:none;border:0;color:var(--text);font:inherit;outline:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px}
+.chips button{font:.75rem var(--mono);background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px;cursor:pointer}
+.chips button:hover{color:var(--cyan);border-color:var(--cyan)}
+.log{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.q{position:relative;padding:0 0 26px 24px}
+.q::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:3px;background:var(--ink);border:2px solid var(--cyan);transform:rotate(45deg)}
+.q.now::before{background:var(--gold);border-color:var(--gold)}
+.q h3{font-size:1.05rem}.q .meta{font:.8rem var(--mono);color:var(--muted)}
+.q p{color:var(--muted);margin-top:4px;max-width:70ch}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer;font:inherit;font-size:.9rem}
+.filters button[aria-pressed=true]{background:var(--cyan);color:var(--ink);border-color:var(--cyan);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.card[data-t~=game]{border-top:3px solid var(--pink)}
+.card[data-t~=cyber]{border-top:3px solid var(--cyan)}
+.card[data-t~=ai]{border-top:3px solid var(--gold)}
+.card[data-t~=web]{border-top:3px solid #9b8cff}
+.card[data-t~=data]{border-top:3px solid #2fbf7a}
+.card h3{font-size:1rem}.card p{color:var(--muted);font-size:.9rem;flex:1}
+.card .stack{font:.75rem var(--mono);color:var(--muted)}
+.card a{font-weight:600;font-size:.9rem;text-decoration:none}
+.card a:hover{text-decoration:underline}
+.card .soon{font-size:.85rem;color:var(--muted)}
+.tree{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tree div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.tree h3{font-size:.95rem;margin-bottom:10px}
+.tree span{display:inline-block;margin:0 5px 6px 0;padding:2px 10px;border:1px solid var(--line);border-radius:6px;font:.8rem var(--mono);color:var(--text);background:var(--panel2)}
+.ach{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;list-style:none;padding:0}
+.ach li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:.92rem}
+.ach li small{display:block;color:var(--muted);font:.75rem var(--mono)}
+.ach li::before{content:"\2605  ";color:var(--gold)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.contact a{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:var(--text)}
+.contact a:hover{border-color:var(--cyan)}
+.contact small{display:block;color:var(--muted);font:.78rem var(--mono)}
+footer{margin-top:64px;padding:24px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.status{background:var(--panel);border-top:1px solid var(--line);padding:12px 20px;text-align:center;font:.9rem var(--mono);color:var(--text)}
+.status .lbl{color:var(--gold);margin-right:8px}
+.status i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#2fbf7a;margin-right:8px;animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(47,191,122,.6)}70%,100%{box-shadow:0 0 0 8px rgba(47,191,122,0)}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}#out{height:240px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status i{animation:none}.bar i span{transition:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>maanvi@portfolio:~$</b>
+  <a href="#quests">Quests</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#community">Community</a><a href="#contact">Contact</a>
+  <button class="tool" id="theme" type="button">Light mode</button><button class="tool" id="snd" type="button" aria-pressed="false">Sound: off</button>
+</div></nav>
+
+<main class="wrap">
+<div class="hero" id="top">
+  <div>
+    <div class="avatar" aria-hidden="true">MB<img src="me.jpg" alt="" onerror="this.remove()"></div>
+    <h1>Maanvi Bhagat</h1>
+    <p class="tag">Computer engineer who builds games and investigates the web. I teach programming, run OSINT checks and ship small worlds that teach something.</p>
+    <div class="btns">
+      <a class="btn fill" href="#projects">Play my projects</a>
+      <a class="btn" href="#contact">Send a message</a>
+      <a class="btn" href="Maanvi_Bhagat_Resume.pdf" download>Download resume</a>
+    </div>
+    <div class="xp" aria-label="Academic stats">
+      <div class="bar"><label><span>B.Tech CGPA</span><span>8.90 / 10</span></label><i><span data-w="86.6"></span></i></div>
+      <div class="bar"><label><span>Honours in AR/VR</span><span>9.45 / 10</span></label><i><span data-w="94.5"></span></i></div>
+    </div>
+  </div>
+  <div class="term" role="region" aria-label="Interactive terminal">
+    <header><u></u><u></u><u></u>&nbsp;guest@maanvi-sec: ~</header>
+    <div id="out" aria-live="polite"></div>
+    <div class="chips" id="chips"></div>
+    <label class="prompt"><span>&gt;</span><input id="cmd" autocomplete="off" spellcheck="false" placeholder="type a command, e.g. help"></label>
+  </div>
+</div>
+
+<section id="quests">
+  <h2>Quest log</h2>
+  <p class="sub">Roles and internships, newest first.</p>
+  <div class="log" id="log"></div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <p class="sub">Degree, diploma and school results.</p>
+  <div class="log" id="edu"></div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="sub">Playable games, security tools and AI builds. Filter by class.</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="skills">
+  <h2>Skill tree</h2>
+  <p class="sub">Tools I use across games, security, AI and the web.</p>
+  <div class="tree" id="tree"></div>
+</section>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+  <p class="sub">Certifications, hackathons and leadership roles.</p>
+  <ul class="ach" id="ach"></ul>
+</section>
+
+<section id="community">
+  <h2>Community and interests</h2>
+  <p class="sub">Clubs, volunteering, campus roles, languages and what I do for fun.</p>
+  <div class="tree" id="comm"></div>
+</section>
+
+<section id="contact">
+  <h2>Join the party</h2>
+  <p class="sub">Open to software, cyber analysis and AR/VR roles, and to higher studies in AR/VR and AI.</p>
+  <div class="contact" id="links">
+    <a href="mailto:maanviabhagat@gmail.com"><small>Email</small>maanviabhagat@gmail.com</a>
+    <a href="https://www.linkedin.com/in/maanvi-bhagat-1a516a203" target="_blank" rel="noopener"><small>LinkedIn</small>maanvi-bhagat</a>
+    <a href="https://github.com/MaanviBhagat" target="_blank" rel="noopener"><small>GitHub</small>MaanviBhagat</a>
+    <a href="Maanvi_Bhagat_Resume.pdf" download><small>Resume (PDF)</small>Download</a>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">&copy; 2026 Maanvi Bhagat. Mumbai, India. Built with plain HTML, CSS and JavaScript.</div></footer>
+<div class="status" role="status"><span class="lbl">STATUS //</span><i aria-hidden="true"></i>Open to work, Mumbai or remote</div>
+
+<script>
+const PBI = "https://app.powerbi.com/view?r=";
+const D = {
+  quests: [
+    ["Lecturer","Shri Bhagubhai Mafatlal Polytechnic","Aug 2026 - now","Teach diploma students Event-Driven UI Programming in C#, Software Development Methodology and Engineering Graphics.",1],
+    ["Technical Instructor (Freelance)","Thyskool","Jun 2026 - now","Teach Python, networking and JavaScript to international students and mentor Cambridge A-Level projects.",1],
+    ["Cyber Analyst Intern","DeepCytes Cyber Labs, UK (remote)","Jul - Dec 2025","Ran OSINT investigations on fraud and compliance signals, built a Selenium and BeautifulSoup scraper, and contributed to a React OSINT tool directory.",0],
+    ["AI Intern","Cisco (virtual)","Nov - Dec 2025","Analysed customer reviews with NLP concepts and structured prompt engineering.",0],
+    ["Data Analyst Trainee","Infosys Foundation","Jul 2025","Completed data analytics training with exposure to Power BI and Tableau.",0],
+    ["Android Developer Intern","AICTE Eduskills","Oct - Dec 2024","Built native Kotlin apps with REST API integrations.",0],
+    ["Website Head","TEDxSAKEC","Oct 2024 - Jul 2025","Built the event website and led the web team.",0],
+    ["Marketing Assistant Intern","iRobokid and FLITE Labs","Dec 2023 - Feb 2024","Tracked leads and reports in Excel and Google Sheets, and supported SEO and email marketing with Mailchimp and Zoho.",0],
+    ["Software Engineer Intern","Blue Zone Systems","Jul - Aug 2022","Developed C# ASP.NET MVC and Web Forms modules on SQL Server.",0],
+    ["Technical Content Writer Intern","India Techno Blog","Jul - Aug 2022","Wrote articles on technology trends, smartphones and operating systems.",0]
+  ],
+  projects: [
+    ["Aetherium Academy: The Vaelor Trials","game","A fantasy story told as a game portfolio, with a trailer and gacha-style project pulls.","HTML, CSS, JS, video","https://maanvibhagat.github.io/aigameportfolio/","Open"],
+    ["Cyber Era","game cyber","A game where you solve cyber mysteries.","HTML, CSS, JS","https://maanvibhagat.github.io/cyberera/","Play"],
+    ["A Detective Fantasy","game","Text adventure: follow clues to solve a mystery.","Interactive fiction","https://maanvibhagat.github.io/adetectivefantasy/","Play"],
+    ["Market Minds","game","Interactive simulations that build market awareness.","HTML, CSS, JS","https://maanvibhagat.github.io/marketminds/","Play"],
+    ["Numbers","game","A kids' game for learning numbers, with original audio and cartoons.","HTML, CSS, JS","https://maanvibhagat.github.io/numbers/index","Play"],
+    ["Leena's Birthday","game","Bake and decorate a cake for a birthday celebration.","HTML, CSS, JS","https://maanvibhagat.github.io/leenasbday/main","Play"],
+    ["Send a Letter","game","A heartfelt letter-writing game for two characters.","HTML, CSS, JS","https://maanvibhagat.github.io/shayrokagame/main","Play"],
+    ["Flappy Bird in AR/VR","game","Flappy Bird steered with head movement and gestures.","Unity, AR/VR","","Coming soon"],
+    ["OSINT Tool Discovery Platform","cyber web","Searchable directory where threat analysts find and sort OSINT tools.","React, Next.js, Node.js","","Built at DeepCytes"],
+    ["Compliance and Threat Scraper","cyber","Pulls compliance filings and indicators into structured reports.","Python, Selenium, BeautifulSoup","","Built at DeepCytes"],
+    ["CareerGen","ai web","AI career guidance with learning roadmaps and a resume enhancer.","React, Node.js, OpenAI API","https://maanvibhagat.github.io/career-gen/","Open"],
+    ["Technical Content Researcher Agent","ai","Gathers accurate data and references on technical topics and summarises the pros and cons.","Taskade","https://www.taskade.com/a/01JHNF3ZJFYF9M3XM0Z6WCY04R","Open agent"],
+    ["Humanized Technical Content Writer Agent","ai","Writes engaging articles and marketing copy for a chosen audience while keeping it technically accurate.","Taskade","https://www.taskade.com/a/01JHNFFYKPN972KMF730QETPYZ","Open agent"],
+    ["Technical Marketing Agent","ai","Plans marketing strategy from technical content and audience insights, including where to distribute it.","Taskade","https://www.taskade.com/a/01JHNFTQ7PNAMYBETJV6JVF4MP","Open agent"],
+    ["AI Recipe Creator","ai","Makes recipes from your diet and your leftovers.","Taskade","https://www.taskade.com/a/01K03HK628DZZC6SQTP7MRT89E","Open workspace"],
+    ["CA Assistant","ai","Virtual assistant for tax, audit, financial and compliance tasks, made for Indian CAs, tax professionals and students.","Taskade","https://www.taskade.com/a/01JWXNVYJ89M0WMF2TMA9WW9CZ","View notes"],
+    ["PregHelp","web ai","Pregnancy support platform with week-by-week advice, medical resources, diet and exercise guides, and doctor connect.","Web","","Coming soon"],
+    ["EcoAudit","web","A guide to sustainable solutions","Figma","https://www.figma.com/proto/OwgtjU06ZADQsfPsxzLpIV/ECOAUDIT?node-id=15-789&t=oMsTZVs8M1W5wmwu-1&starting-point-node-id=67%3A108","Open"],
+    ["RPA Pipeline","ai","Moves data between Google Drive and Excel without manual steps.","UiPath Studio","","Built"],
+    ["VR Exhibition","web game","A virtual space showing my graphics and drawings.","Spatial","https://www.spatial.io/s/maanvi_bhagat04s-Exhibition-66f38a0f07550d870e657b7f?share=836765533638988262","Enter"],
+    ["Marvel Heroes Lens","game","A Snapchat AR lens.","Lens Studio, AR","https://lens.snap.com/experience/2d7d091b-7961-4cc6-af4a-172a3d38420b","Try lens"],
+    ["Jewellery Universe","web","A jewellery storefront built on Wix.","Wix","https://maanviabhagat.wixsite.com/jewelry-universe-2","Visit"],
+    ["Virtual Product Showcase","web","Augmented reality product visualisation.","CartMagician, AR","https://cartmagician.com/pjview/5972595e-9f14-43ac-9717-23febbe35a12?conv=714852","View demo"],
+    ["Power BI: Myntra Dashboard","data","Interactive Power BI dashboard.","Power BI",PBI+"eyJrIjoiZGE1ZGNkMzgtMTc1Yi00NDRjLTkyM2ItN2IyNTZkODQ3M2EwIiwidCI6IjdkOGNmNjBkLTE1NWMtNGQ1OS1hMTAxLTgwOGZjNzczMDQ0MiJ9","Open dashboard"],
+    ["Power BI: Global Superstore","data","Interactive Power BI dashboard.","Power BI",PBI+"eyJrIjoiNmVhMmZkMzctOWMxZi00MDg4LTljMWQtNTUzZDU2M2I5YTNmIiwidCI6IjdkOGNmNjBkLTE1NWMtNGQ1OS1hMTAxLTgwOGZjNzczMDQ0MiJ9","Open dashboard"],
+    ["Power BI: Market Momentum and Product Showcase","data","Interactive Power BI dashboard.","Power BI",PBI+"eyJrIjoiZTUxZDY0M2YtYzkwOS00NmUyLTk5MWQtMTI1YjE2ODNhNmFiIiwidCI6IjdkOGNmNjBkLTE1NWMtNGQ1OS1hMTAxLTgwOGZjNzczMDQ0MiJ9","Open dashboard"],
+    ["Power BI: Product Line","data","Interactive Power BI dashboard.","Power BI",PBI+"eyJrIjoiNmRlNjQ2YWUtNGQxNC00YzA3LTg5ODMtZDAyYjkyZmUxMDNmIiwidCI6IjdkOGNmNjBkLTE1NWMtNGQ1OS1hMTAxLTgwOGZjNzczMDQ0MiJ9","Open dashboard"],
+    ["Power BI: Blue Dashboard","data","Interactive Power BI dashboard.","Power BI",PBI+"eyJrIjoiZTBkYjIwYWMtY2RmZS00ODY5LWJjOTQtNzhlNmQ2OTE0OGUwIiwidCI6IjdkOGNmNjBkLTE1NWMtNGQ1OS1hMTAxLTgwOGZjNzczMDQ0MiJ9","Open dashboard"]
+  ],
+  filters: [["all","All"],["game","Games"],["cyber","Cyber"],["ai","AI"],["data","Data"],["web","Web and AR"]],
+  skills: [
+    ["Languages","Python,Java,C++,C,C#,JavaScript,TypeScript,Kotlin,SQL,PHP,Go,Bash"],
+    ["Game and AR/VR","Unity,Unreal Engine,Lens Studio,Meta Spark,Figma"],
+    ["Cyber and network","OSINT,Wireshark,Nmap,Kali Linux,Packet Tracer"],
+    ["AI and automation","Prompt engineering,Relevance AI,Taskade,UiPath,Selenium,Apps Script"],
+    ["Web","React,Next.js,Node.js,Angular,ASP.NET,HTML5,CSS3,Bootstrap"],
+    ["Data and databases","Power BI,Tableau,Looker Studio,MySQL,PostgreSQL,MongoDB,SQL Server"]
+  ],
+  community: [
+    ["Clubs","Google Developer Students Club,Green Club,EBSB Club,Sambodhi (Writers' Cell),Adaakar (Drama Club)"],
+    ["Volunteering","Blood Donation Camp volunteer,Content writing for Chamelia Helpdia Charitable Trust"],
+    ["Campus roles","Student Representative (Anti-Ragging Committee),Anchor (College Fest Beats 2024),Student Officer (IUCEE Student Chapter)"],
+    ["Languages","Gujarati,English,Marathi,Hindi,Sanskrit (limited),German (basic),French (basic)"],
+    ["Interests","Coding,Teaching,Reading,Writing,Art and design,Podcasting,Photography"]
+  ],
+  edu: [
+    ["B.Tech in Computer Engineering (Honours in AR/VR)","Shah and Anchor Kutchhi Engineering College, University of Mumbai","2023 - 2026","CGPA 8.90 / 10. Honours CGPA 9.45 / 10.",0],
+    ["Diploma in Computer Engineering","Vidyavardhini College of Engineering, MSBTE","2020 - 2023","85.31%",0],
+    ["Secondary School Certificate","Vidya Vikasini English High School","2020","93.40%",0]
+  ],
+  profiles: [
+    ["HackerRank","maanviabhagat","https://www.hackerrank.com/profile/maanviabhagat"],
+    ["LeetCode","Maanvi_Bhagat","https://leetcode.com/u/Maanvi_Bhagat/"],
+    ["TryHackMe","maanviabhagat","https://tryhackme.com/p/maanviabhagat"],
+    ["Credly","maanvi-bhagat","https://www.credly.com/users/maanvi-bhagat"]
+  ],
+  ach: [
+    ["Meta AR/VR/MR/XR","Certification, 2024"],["IBM AI Fundamentals","Certification, 2025"],
+    ["Google AI Essentials","Certification, 2024"],["Google Foundations of Cybersecurity","Certification, 2024"],
+    ["Data Analytics","Infosys and ICT Academy, 2025"],["UiPath Automation","Certification, 2024"],
+    ["Apply AI and Analyse Customer Reviews","Cisco"],["Multi-Agent AI Systems","IUCEE"],
+    ["Blockchain Fundamentals","101 Blockchains, 2024"],["Design Thinking","IUCEE, 2024"],
+    ["Python","IIT Bombay Spoken Tutorial, 2023"],
+    ["AI Fundamentals with IBM SkillsBuild","Cisco, Dec 2025"],["Artificial Intelligence Fundamentals","IBM SkillsBuild, Dec 2025"],
+    ["Introduction to Modern AI","Cisco, Dec 2025"],["Find Insights with AI","Cisco, Dec 2025"],
+    ["Introduction to Data Science","Cisco, Mar 2026"],["Python Programming with Red Hat (AD141)","Red Hat, Mar 2026"],
+    ["Celonis Foundations","Celonis, Apr 2026"],["Red Hat Academy Program Learner","Red Hat, 2024 (expired Oct 2025)"],
+    ["Speaker: Mastering Prompt Engineering","Seminar, March 2025"],["Hackathons","SIH, BharatISRO, Aavishkar, Hack-Your-Way"],["Competitions","IUCEE Design Thinking, Blind Code, Paper Presentation"],
+    ["Website Head","TEDxSAKEC"],["Graphics Head","College Alumni Association"]
+  ]
+};
+
+const $ = s => document.querySelector(s);
+const mk = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.textContent = h; return e; };
+
+/* Quest log */
+D.quests.forEach(([role, org, when, txt, now]) => {
+  const q = mk("div", "q" + (now ? " now" : ""));
+  q.append(mk("h3", "", role), mk("div", "meta", org + "  |  " + when), mk("p", "", txt));
+  $("#log").append(q);
+});
+
+D.edu.forEach(([role, org, when, txt]) => {
+  const q = mk("div", "q");
+  q.append(mk("h3", "", role), mk("div", "meta", org + "  |  " + when), mk("p", "", txt));
+  $("#edu").append(q);
+});
+
+/* Projects with filters */
+const grid = $("#grid");
+D.projects.forEach(([name, type, desc, stack, url, label]) => {
+  const c = mk("article", "card"); c.dataset.t = type;
+  c.append(mk("h3", "", name), mk("p", "", desc), mk("div", "stack", stack));
+  if (url) { const a = mk("a", "", label); a.href = url; a.target = "_blank"; a.rel = "noopener"; a.setAttribute("aria-label", label + ": " + name); c.append(a); }
+  else c.append(mk("span", "soon", label));
+  grid.append(c);
+});
+D.filters.forEach(([k, l], i) => {
+  const b = mk("button", "", l); b.type = "button"; b.setAttribute("aria-pressed", i === 0);
+  b.onclick = () => {
+    document.querySelectorAll("#filters button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    grid.querySelectorAll(".card").forEach(c => c.hidden = !(k === "all" || c.dataset.t.split(" ").includes(k)));
+  };
+  $("#filters").append(b);
+});
+
+/* Skills and achievements */
+D.skills.forEach(([h, list]) => {
+  const d = mk("div"); d.append(mk("h3", "", h));
+  list.split(",").forEach(s => d.append(mk("span", "", s)));
+  $("#tree").append(d);
+});
+D.community.forEach(([h, list]) => {
+  const d = mk("div"); d.append(mk("h3", "", h));
+  list.split(",").forEach(s => d.append(mk("span", "", s)));
+  $("#comm").append(d);
+});
+D.profiles.filter(x => x[2]).forEach(([n, u, url]) => {
+  const a = mk("a"); a.href = url; a.target = "_blank"; a.rel = "noopener";
+  a.append(mk("small", "", n), document.createTextNode(u)); $("#links").append(a);
+});
+D.ach.forEach(([a, b]) => { const li = mk("li", "", a); li.append(mk("small", "", b)); $("#ach").append(li); });
+
+/* XP bars fill when visible */
+const fill = () => document.querySelectorAll(".bar i span").forEach(s => s.style.width = s.dataset.w + "%");
+if ("IntersectionObserver" in window) new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { fill(); o.disconnect(); } }).observe($(".xp"));
+else fill();
+
+/* Theme toggle */
+const root = document.documentElement, themeBtn = $("#theme");
+const syncTheme = () => themeBtn.textContent = root.dataset.theme === "light" ? "Dark mode" : "Light mode";
+themeBtn.onclick = () => {
+  root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  syncTheme();
+};
+syncTheme();
+
+/* Sound: generated with Web Audio, off until the visitor turns it on */
+const AC = window.AudioContext || window.webkitAudioContext, sndBtn = $("#snd");
+let ac, on = false, timer, step = 0;
+const NOTES = [261.6, 311.1, 349.2, 392, 466.2, 523.3], PAT = [0, 2, 4, 2, 3, 5, 4, 2];
+function tone(f, d, type, v) {
+  if (!on || !ac) return;
+  const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+  o.type = type; o.frequency.value = f;
+  g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d);
+}
+function music() {
+  tone(NOTES[PAT[step % 8]], .35, "triangle", .03);
+  if (step % 8 === 0) tone(NOTES[0] / 2, .8, "sine", .04);
+  step++;
+}
+if (!AC) sndBtn.hidden = true;
+sndBtn.onclick = () => {
+  on = !on;
+  if (on) { ac = ac || new AC(); ac.resume(); tone(784, .12, "square", .05); timer = setInterval(music, 450); }
+  else clearInterval(timer);
+  sndBtn.textContent = "Sound: " + (on ? "on" : "off");
+  sndBtn.setAttribute("aria-pressed", on);
+};
+document.addEventListener("click", e => { if (!e.target.closest("#snd") && e.target.closest("button,a")) tone(660, .07, "square", .035); });
+document.addEventListener("visibilitychange", () => { if (ac) document.hidden ? ac.suspend() : on && ac.resume(); });
+
+/* Terminal */
+const out = $("#out"), inp = $("#cmd");
+const print = (txt, cls) => { const s = mk("div", cls || "", txt); out.append(s); out.scrollTop = out.scrollHeight; };
+const CMDS = {
+  help: () => ["Commands: about, quests, projects, skills, clubs, contact, clear", "Try: sudo hire-me"],
+  about: () => ["Maanvi Bhagat, computer engineer (Honours in AR/VR).", "Games, OSINT, AI tools and teaching. Based in Mumbai."],
+  quests: () => D.quests.slice(0, 4).map(q => "- " + q[0] + " @ " + q[1]),
+  projects: () => D.projects.slice(0, 8).map(p => "- " + p[0]).concat(["...scroll to Projects for all " + D.projects.length]),
+  skills: () => D.skills.map(s => s[0] + ": " + s[1].split(",").slice(0, 4).join(", ")),
+  clubs: () => D.community.slice(0, 3).map(c => c[0] + ": " + c[1].split(",").slice(0, 3).join(", ")),
+  contact: () => ["maanviabhagat@gmail.com", "linkedin.com/in/maanvi-bhagat-1a516a203", "github.com/MaanviBhagat"],
+  "sudo hire-me": () => ["[ok] permission granted", "[ok] sending offer letter to inbox... just kidding, email me above."]
+};
+function run(raw) {
+  const c = raw.trim().toLowerCase();
+  print("> " + raw, "c");
+  tone(CMDS[c] || c === "clear" || !c ? 880 : 180, .1, CMDS[c] || !c ? "square" : "sawtooth", .03);
+  if (!c) return;
+  if (c === "clear") { out.textContent = ""; return; }
+  (CMDS[c] ? CMDS[c]() : ["Unknown command: " + c + ". Type help."]).forEach(l => print(l, CMDS[c] ? "" : "p"));
+}
+inp.addEventListener("keydown", e => { if (e.key === "Enter") { run(inp.value); inp.value = ""; } });
+["help", "about", "projects", "skills", "contact"].forEach(k => {
+  const b = mk("button", "", k); b.type = "button"; b.onclick = () => run(k); $("#chips").append(b);
+});
+print("Booting portfolio v2026...", "g");
+print("Access level: guest. Type help to begin.");
+</script>
+</body>
+</html>
